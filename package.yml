@@ -1,0 +1,18 @@
+package: community.lazycat.app.one-api
+version: 0.6.10
+name: One API
+description: OpenAI API gateway to manage and redistribute all LLM providers through one unified interface
+min_os_version: "1.5.0"
+homepage: https://github.com/songquanpeng/one-api
+author: songquanpeng
+license: MIT
+permissions:
+  required:
+    - net.internet
+locales:
+  zh:
+    name: One API
+    description: OpenAI 接口管理与分发系统：将各类大模型统一为 OpenAI 格式调用，支持渠道管理与额度分发
+  en:
+    name: One API
+    description: OpenAI API gateway to manage and redistribute all LLM providers

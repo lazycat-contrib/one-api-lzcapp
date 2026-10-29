@@ -1,0 +1,43 @@
+version: 1
+
+project:
+  root: .
+  build_config: lzc-build.yml
+  package_file: package.yml
+  output: dist/application.lpk
+  target_arch: amd64
+
+update:
+  strategy: publish
+  allow_downgrade: false
+  version_source:
+    type: image
+    image: one-api
+
+build:
+  toolchains: []
+  run_buildscript: false
+
+images:
+  - id: one-api
+    target: service
+    service: one-api
+    source: docker.io/justsong/one-api
+    channel: stable
+    sort: semver
+    tag_regex: ^v\d+\.\d+\.\d+$
+    version_regex: ^v(?P<version>\d+\.\d+\.\d+)$
+    max_tags: 50000
+    max_matching_tags: 50000
+    delivery:
+      mode: mirror
+      require_digest_match: true
+
+stores:
+  official:
+    enabled: false
+  private:
+    enabled: true
+    skip_if_version_exists: true
+    name: One API
+    summary: 大模型接口统一管理与分发网关
